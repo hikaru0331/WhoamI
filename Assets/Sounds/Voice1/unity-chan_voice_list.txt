@@ -1,0 +1,15 @@
+﻿『ユニティちゃん』ボイスリスト
+(C)2014 Unity Technologies Japan
+
+声優：角元明日香（スペースクラフト・エンタテインメント）
+
+CallMe      「呼んだっ！？」
+CountDown   「3・2・1」
+Damage      「やっ！」
+Joy         「やったー！」
+Jump_1      「それっ！」
+Jump_2      「やっ！」
+Jump_3      「じゃーんぷっ！」
+Lose_1      「そんな〜」
+Lose_2      「ゆに〜」
+Start     「スタート！」
