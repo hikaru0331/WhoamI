@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public sealed class HumanoidPlayerController : MonoBehaviour
+public sealed class HumanoidPlayerController : MonoBehaviour, IHumanoidState
 {
     private const float CheckRadius = 0.1f;
     private const float JumpThreshold = 0.5f;
@@ -15,9 +15,11 @@ public sealed class HumanoidPlayerController : MonoBehaviour
 
     private Transform tf;
     private Rigidbody2D rb;
-    private bool grounded;
     private float jumpTimestamp = -JumpThreshold;
     private bool requestJump;
+
+    public Vector2 Velocity { get; private set; }
+    public bool Grounded { get; private set; }
 
     private void Awake()
     {
@@ -35,24 +37,27 @@ public sealed class HumanoidPlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // TODO: 最適化
         var move = new Vector2(inputProvider.move.x, 0f);
         var velocity = rb.velocity;
         var gravityVelocity = Project(velocity, Physics2D.gravity);
         rb.velocity = move * speed + gravityVelocity;
-        grounded = Physics2D.OverlapCircle((Vector2)tf.position + groundOffset, CheckRadius, groundLayer);
+        Grounded = Physics2D.OverlapCircle((Vector2)tf.position + groundOffset, CheckRadius, groundLayer);
 
         if (CanJump())
         {
             jumpTimestamp = Time.time;
+            var gravity = rb.gravityScale * Physics2D.gravity;
             // ジャンプの初速を計算 v = sqrt(2 * g * h)
-            var jumpVel = Mathf.Sqrt(2f * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
+            var jumpVel = Mathf.Sqrt(2f * jumpHeight * -gravity.y);
             rb.velocity = new Vector2(velocity.x, jumpVel);
         }
 
         requestJump = false;
+        Velocity = rb.velocity;
     }
 
-    private bool CanJump() => requestJump && grounded && Time.time - jumpTimestamp > JumpThreshold;
+    private bool CanJump() => requestJump && Grounded && Time.time - jumpTimestamp > JumpThreshold;
 
     /// <summary>
     /// vectorをonNormalに下ろした正射影ベクトルを返す
@@ -70,7 +75,7 @@ public sealed class HumanoidPlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = grounded ? Color.green : Color.red;
+        Gizmos.color = Grounded ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position + (Vector3)groundOffset, CheckRadius);
     }
 }
