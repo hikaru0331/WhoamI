@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public sealed class AvatarMove : MonoBehaviour
+public sealed class HumanoidPlayerController : MonoBehaviour
 {
     private const float CheckRadius = 0.1f;
     private const float JumpThreshold = 0.5f;
@@ -60,7 +60,7 @@ public sealed class AvatarMove : MonoBehaviour
     /// <param name="vector">投影元のベクトル</param>
     /// <param name="onNormal">投影先のベクトル</param>
     /// <returns>正射影ベクトル</returns>
-    private static Vector2 Project(Vector2 vector, Vector2 onNormal)
+    private static Vector2 Project(in Vector2 vector, in Vector2 onNormal)
     {
         var dotProduct = Vector2.Dot(vector, onNormal);
         var sqrMag = onNormal.sqrMagnitude;
