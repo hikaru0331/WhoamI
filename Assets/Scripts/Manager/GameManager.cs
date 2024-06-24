@@ -50,12 +50,6 @@ public class GameManager : MonoBehaviour
                 GameOver();
             }
         }
-
-        // UIへ値を表示する
-        timeCountText.SetText(remainingTime.ToString("000"));
-        coinCountText.SetText(gameCoin.ToString("000"));
-        scoreCountText.SetText(gameScore.ToString("0000000"));
-        lifeCountText.SetText(PlayerController.playerLife.ToString("00"));
     }
 
     /// <summary>
