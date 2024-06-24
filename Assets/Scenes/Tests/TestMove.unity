@@ -661,6 +661,7 @@ GameObject:
   - component: {fileID: 4183136975040472937}
   - component: {fileID: 4183136975040472936}
   - component: {fileID: 4183136975040472934}
+  - component: {fileID: 4183136975040472938}
   m_Layer: 0
   m_Name: EnemyNormal
   m_TagString: Damage
@@ -766,6 +767,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4183136975040472938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4183136975040472933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679ee18b7f967471db3493d2ab6e14d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputProvider: {fileID: 1208034063}
+  speed: 5
 --- !u!1001 &9119650176625854877
 PrefabInstance:
   m_ObjectHideFlags: 0
