@@ -40,7 +40,7 @@ public sealed class HumanoidPlayerController : MonoBehaviour, IHumanoidState
         // TODO: 最適化
         var move = new Vector2(inputProvider.move.x, 0f);
         var velocity = rb.velocity;
-        var gravityVelocity = Project(velocity, Physics2D.gravity);
+        var gravityVelocity = PhysicsUtility.Project(velocity, Physics2D.gravity);
         rb.velocity = move * speed + gravityVelocity;
         Grounded = Physics2D.OverlapCircle((Vector2)tf.position + groundOffset, CheckRadius, groundLayer);
 
@@ -58,20 +58,6 @@ public sealed class HumanoidPlayerController : MonoBehaviour, IHumanoidState
     }
 
     private bool CanJump() => requestJump && Grounded && Time.time - jumpTimestamp > JumpThreshold;
-
-    /// <summary>
-    /// vectorをonNormalに下ろした正射影ベクトルを返す
-    /// </summary>
-    /// <param name="vector">投影元のベクトル</param>
-    /// <param name="onNormal">投影先のベクトル</param>
-    /// <returns>正射影ベクトル</returns>
-    private static Vector2 Project(in Vector2 vector, in Vector2 onNormal)
-    {
-        var dotProduct = Vector2.Dot(vector, onNormal);
-        var sqrMag = onNormal.sqrMagnitude;
-        var projection = dotProduct / sqrMag * onNormal;
-        return projection;
-    }
 
     private void OnDrawGizmos()
     {
