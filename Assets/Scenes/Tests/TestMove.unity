@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 922479711}
   - component: {fileID: 922479710}
   - component: {fileID: 922479712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputProvider: {fileID: 1208034063}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   speed: 3
+  leftGroundOffset: {x: -0.5, y: -0.5}
+  rightGroundOffset: {x: 0.5, y: -0.5}
 --- !u!1 &1208034061
 GameObject:
   m_ObjectHideFlags: 0
