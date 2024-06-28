@@ -202,6 +202,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144046534}
   m_CullTransparentMesh: 1
+--- !u!1 &270662380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270662381}
+  - component: {fileID: 270662382}
+  m_Layer: 0
+  m_Name: Swap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &270662381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270662380}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &270662382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270662380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba166a303d0c4a50ab11b824355eb83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characters:
+  - type: 1
+    controller: {fileID: 1933513341}
+    panel: {fileID: 1511543461}
+  - type: 2
+    controller: {fileID: 1779573316}
+    panel: {fileID: 478268405}
+  - type: 0
+    controller: {fileID: 980810767}
+    panel: {fileID: 0}
 --- !u!1 &278882871
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,8 +712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd64bef91d1334ca1914cbfb4c711b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1779573316}
-  controllerType: 2
 --- !u!114 &478268406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,8 +1515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd64bef91d1334ca1914cbfb4c711b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1933513341}
-  controllerType: 1
 --- !u!1 &1714946016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,3 +1944,4 @@ SceneRoots:
   - {fileID: 9119650176625854877}
   - {fileID: 6062325309362726994}
   - {fileID: 980810763}
+  - {fileID: 270662381}
