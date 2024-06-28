@@ -9,13 +9,10 @@ public sealed class CharacterControlSwap : MonoBehaviour
     {
         foreach (var character in characters)
         {
-            character.controller.SwitchController(character.type);
-            if (character.panel != null)
-            {
-                character.panel.OnSwapObservable
-                    .Subscribe(swap => OnSwap(swap.ownPanel, swap.otherPanel))
-                    .RegisterTo(destroyCancellationToken);
-            }
+            character.Setup();
+            character.OnSwapObservable?
+                .Subscribe(swap => OnSwap(swap.ownPanel, swap.otherPanel))
+                .RegisterTo(destroyCancellationToken);
         }
     }
 
