@@ -29,8 +29,9 @@ public sealed class HumanoidAIController : ControllerBase, IHumanoidState, IAICo
 
     private void FixedUpdate()
     {
+        if (target == null) return;
         var moveX = target.position.x - tf.position.x;
-        if (Mathf.Abs(moveX) < 0.01f)
+        if (Mathf.Abs(moveX) < 0.1f)
         {
             moveX = 0f;
         }
