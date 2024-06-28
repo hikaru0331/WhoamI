@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public sealed class HumanoidPlayerController : MonoBehaviour, IHumanoidState
+public sealed class HumanoidPlayerController : ControllerBase, IHumanoidState
 {
     private const float CheckRadius = 0.1f;
     private const float JumpThreshold = 0.5f;

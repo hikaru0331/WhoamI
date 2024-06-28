@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 [DisallowMultipleComponent]
 public sealed class CharacterPanel : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private ControllerSwitch character;
+    [SerializeField] private ControllerType controllerType;
     private Transform tf;
     private Vector3 beginDragPosition;
     private readonly List<RaycastResult> raycastResults = new();
@@ -12,6 +14,11 @@ public sealed class CharacterPanel : MonoBehaviour, IBeginDragHandler, IDragHand
     private void Awake()
     {
         tf = transform;
+    }
+
+    private void Start()
+    {
+        character.SwitchController(controllerType);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -41,10 +48,12 @@ public sealed class CharacterPanel : MonoBehaviour, IBeginDragHandler, IDragHand
     private void SwapPanels(CharacterPanel otherPanel)
     {
         (tf.position, otherPanel.tf.position) = (otherPanel.tf.position, beginDragPosition);
+        (character, otherPanel.character) = (otherPanel.character, character);
+        character.SwitchController(controllerType);
+        otherPanel.character.SwitchController(otherPanel.controllerType);
     }
 
-
-    public void RevertDrag()
+    private void RevertDrag()
     {
         tf.position = beginDragPosition;
     }

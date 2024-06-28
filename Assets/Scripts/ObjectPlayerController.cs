@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public sealed class ObjectPlayerController : MonoBehaviour
+public sealed class ObjectPlayerController : ControllerBase
 {
     private const float CheckRadius = 0.1f;
 

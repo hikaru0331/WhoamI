@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public sealed class FloatingPlayerController : MonoBehaviour
+public sealed class FloatingPlayerController : ControllerBase
 {
     public InputProvider inputProvider;
     public float speed;
