@@ -16,6 +16,7 @@ public sealed class FloatingAIController : ControllerBase, IAIController
 
     private void FixedUpdate()
     {
+        if (target == null) return;
         var direction = new Vector2(target.position.x - transform.position.x, 0f).normalized;
         rb.velocity = direction * speed;
     }
