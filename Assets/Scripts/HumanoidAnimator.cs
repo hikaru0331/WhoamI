@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(IHumanoidState))]
+[RequireComponent(typeof(GroundCheck))]
 public sealed class HumanoidAnimator : MonoBehaviour
 {
     private static readonly int IsGrounded = Animator.StringToHash("isGround");
@@ -11,25 +11,39 @@ public sealed class HumanoidAnimator : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] private new SpriteRenderer renderer;
-    private IHumanoidState state;
+    private Transform tf;
+    private GroundCheck gc;
+    private Vector2 prevPos;
+    private Vector2 move;
     private bool prevGrounded = true;
 
     private void Awake()
     {
-        TryGetComponent(out state);
+        tf = transform;
+        TryGetComponent(out gc);
     }
 
     private void Update()
     {
-        animator.SetFloat(Horizontal, state.Velocity.x);
-        animator.SetFloat(Vertical, state.Velocity.y);
-        animator.SetBool(IsGrounded, state.Grounded);
-        renderer.flipX = state.Velocity.x < 0f;
-        if (prevGrounded && !state.Grounded)
+        animator.SetFloat(Horizontal, move.x);
+        animator.SetFloat(Vertical, move.y);
+        animator.SetBool(IsGrounded, gc.Grounded);
+        if (!Mathf.Approximately(move.x, 0f))
+        {
+            renderer.flipX = move.x < 0f;
+        }
+
+        if (prevGrounded && !gc.Grounded)
         {
             animator.SetTrigger(Jump);
         }
 
-        prevGrounded = state.Grounded;
+        prevGrounded = gc.Grounded;
+    }
+
+    private void FixedUpdate()
+    {
+        move = ((Vector2)tf.position - prevPos).normalized;
+        prevPos = tf.position;
     }
 }
