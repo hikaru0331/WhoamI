@@ -2,29 +2,26 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public sealed class HumanoidPlayerController : ControllerBase, IHumanoidState
+[RequireComponent(typeof(GroundCheck))]
+public sealed class HumanoidPlayerController : ControllerBase
 {
-    private const float CheckRadius = 0.1f;
     private const float JumpThreshold = 0.5f;
 
     public InputProvider inputProvider;
-    public LayerMask groundLayer;
     public float speed;
-    public Vector2 groundOffset;
     public float jumpHeight;
 
-    private Transform tf;
     private Rigidbody2D rb;
+    private GroundCheck gc;
     private float jumpTimestamp = -JumpThreshold;
     private bool requestJump;
 
     public Vector2 Velocity { get; private set; }
-    public bool Grounded { get; private set; }
 
     private void Awake()
     {
-        tf = transform;
         TryGetComponent(out rb);
+        TryGetComponent(out gc);
     }
 
     private void Update()
@@ -42,7 +39,6 @@ public sealed class HumanoidPlayerController : ControllerBase, IHumanoidState
         var velocity = rb.velocity;
         var gravityVelocity = PhysicsUtility.Project(velocity, Physics2D.gravity);
         rb.velocity = move * speed + gravityVelocity;
-        Grounded = Physics2D.OverlapCircle((Vector2)tf.position + groundOffset, CheckRadius, groundLayer);
 
         if (CanJump())
         {
@@ -57,11 +53,5 @@ public sealed class HumanoidPlayerController : ControllerBase, IHumanoidState
         Velocity = rb.velocity;
     }
 
-    private bool CanJump() => requestJump && Grounded && Time.time - jumpTimestamp > JumpThreshold;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Grounded ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(transform.position + (Vector3)groundOffset, CheckRadius);
-    }
+    private bool CanJump() => requestJump && gc.Grounded && Time.time - jumpTimestamp > JumpThreshold;
 }
