@@ -13,6 +13,7 @@ public sealed class CharacterControlSwap : MonoBehaviour
             character.OnSwapObservable?
                 .Subscribe(swap => OnSwap(swap.ownPanel, swap.otherPanel))
                 .RegisterTo(destroyCancellationToken);
+            ResetTarget();
         }
     }
 
@@ -24,6 +25,21 @@ public sealed class CharacterControlSwap : MonoBehaviour
         var ownType = ownCharacter.type;
         ownCharacter.ChangeType(otherCharacter.type);
         otherCharacter.ChangeType(ownType);
+        ResetTarget();
+    }
+
+    private void ResetTarget()
+    {
+        var playerCharacter = GetPlayerCharacter();
+        if (playerCharacter == null) return;
+
+        foreach (var character in characters)
+        {
+            if (character.type == ControllerType.AI)
+            {
+                character.SetTarget(playerCharacter.controller.transform);
+            }
+        }
     }
 
     private Character GetCharacter(CharacterPanel panel)
@@ -31,6 +47,19 @@ public sealed class CharacterControlSwap : MonoBehaviour
         foreach (var character in characters)
         {
             if (character.panel == panel)
+            {
+                return character;
+            }
+        }
+
+        return null;
+    }
+
+    private Character GetPlayerCharacter()
+    {
+        foreach (var character in characters)
+        {
+            if (character.type == ControllerType.Player)
             {
                 return character;
             }
