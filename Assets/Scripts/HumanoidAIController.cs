@@ -2,29 +2,26 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public sealed class HumanoidAIController : ControllerBase, IHumanoidState, IAIController
+[RequireComponent(typeof(GroundCheck))]
+public sealed class HumanoidAIController : ControllerBase, IAIController
 {
-    private const float CheckRadius = 0.1f;
     private const float JumpThreshold = 0.5f;
 
-    public LayerMask groundLayer;
     public float speed;
-    public Vector2 groundOffset;
     public float jumpHeight;
 
     private Transform tf;
     private Transform target;
     private Rigidbody2D rb;
+    private GroundCheck gc;
     private float jumpTimestamp = -JumpThreshold;
     private bool requestJump;
-
-    public Vector2 Velocity { get; private set; }
-    public bool Grounded { get; private set; }
 
     private void Awake()
     {
         tf = transform;
         TryGetComponent(out rb);
+        TryGetComponent(out gc);
     }
 
     private void FixedUpdate()
@@ -45,7 +42,6 @@ public sealed class HumanoidAIController : ControllerBase, IHumanoidState, IAICo
         var velocity = rb.velocity;
         var gravityVelocity = PhysicsUtility.Project(velocity, Physics2D.gravity);
         rb.velocity = move * speed + gravityVelocity;
-        Grounded = Physics2D.OverlapCircle((Vector2)tf.position + groundOffset, CheckRadius, groundLayer);
 
         if (CanJump())
         {
@@ -57,16 +53,9 @@ public sealed class HumanoidAIController : ControllerBase, IHumanoidState, IAICo
         }
 
         requestJump = false;
-        Velocity = rb.velocity;
     }
 
-    private bool CanJump() => requestJump && Grounded && Time.time - jumpTimestamp > JumpThreshold;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Grounded ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(transform.position + (Vector3)groundOffset, CheckRadius);
-    }
+    private bool CanJump() => requestJump && gc.Grounded && Time.time - jumpTimestamp > JumpThreshold;
 
     // ReSharper disable once ParameterHidesMember
     public void SetTarget(Transform target)
