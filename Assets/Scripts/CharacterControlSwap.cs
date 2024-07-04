@@ -1,15 +1,18 @@
+using Cinemachine;
 using R3;
 using UnityEngine;
 
 public sealed class CharacterControlSwap : MonoBehaviour
 {
     [SerializeField] private Character[] characters;
+    [SerializeField] private CinemachineVirtualCamera virtualCameraPrefab;
 
     private void Start()
     {
         foreach (var character in characters)
         {
-            character.Setup();
+            var virtualCamera = Instantiate(virtualCameraPrefab);
+            character.Setup(virtualCamera);
             character.OnSwapObservable?
                 .Subscribe(swap => OnSwap(swap.ownPanel, swap.otherPanel))
                 .RegisterTo(destroyCancellationToken);

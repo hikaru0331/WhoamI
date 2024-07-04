@@ -18,7 +18,7 @@ namespace UnityChanScripts.Player
         public AudioSource audioSource;
 
         // GameManagerを参照する変数
-        public GameManager gameManager;
+        public Manager.GameManager gameManager;
 
         // UnityChanのセリフ用AudioClip
         public AudioClip damageVoice;

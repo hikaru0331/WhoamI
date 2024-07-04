@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using R3;
 using UnityEngine;
 
@@ -8,20 +9,27 @@ public class Character
     public ControllerType type;
     public ControllerSwitch controller;
     public CharacterPanel panel;
+    public CinemachineVirtualCamera virtualCamera;
     public Observable<(CharacterPanel ownPanel, CharacterPanel otherPanel)> OnSwapObservable =>
         panel != null ? panel.OnSwapObservable : null;
 
     private IAIController aiControllerCache;
 
-    public void Setup()
+    // ReSharper disable once ParameterHidesMember
+    public void Setup(CinemachineVirtualCamera virtualCamera)
     {
+        this.virtualCamera = virtualCamera;
+        this.virtualCamera.name = $"VirtualCamera_{controller.name}";
+        this.virtualCamera.Follow = controller.transform;
         controller.SwitchController(type);
+        this.virtualCamera.m_Priority = type == ControllerType.Player ? 10 : 0;
     }
 
     public void ChangeType(ControllerType controllerType)
     {
         type = controllerType;
         controller.SwitchController(controllerType);
+        virtualCamera.m_Priority = type == ControllerType.Player ? 10 : 0;
     }
 
     public void SetTarget(Transform target)

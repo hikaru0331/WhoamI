@@ -5,6 +5,7 @@ using UnityEngine;
 public sealed class FloatingAIController : ControllerBase, IAIController
 {
     public float speed;
+    public bool canMoveY = true;
 
     private Transform tf;
     private Rigidbody2D rb;
@@ -19,13 +20,18 @@ public sealed class FloatingAIController : ControllerBase, IAIController
     private void FixedUpdate()
     {
         if (target == null) return;
-        var moveX = target.position.x - tf.position.x;
-        if (Mathf.Abs(moveX) < 0.1f)
+        var move = target.position - tf.position;
+        if (Mathf.Abs(move.x) < 0.1f)
         {
-            moveX = 0f;
+            move.x = 0f;
         }
 
-        var direction = new Vector2(moveX, 0f).normalized;
+        if (!canMoveY || Mathf.Abs(move.y) < 0.1f)
+        {
+            move.y = 0f;
+        }
+
+        var direction = move.normalized;
         rb.velocity = direction * speed;
     }
 

@@ -18,8 +18,8 @@ namespace UnityChanScripts.Items
             // もし接触したtagがPlayerだったなら
             if (other.gameObject.tag == "Player")
             {
-                GameManager.gameScore += score;
-                GameManager.gameCoin += 1;
+                Manager.GameManager.gameScore += score;
+                Manager.GameManager.gameCoin += 1;
                 // サウンドが流れるゲームオブジェクトを生成して音声を再生する
                 Instantiate(coinSound, transform.position, Quaternion.identity);
                 // コインのゲームオブジェクトを消去する

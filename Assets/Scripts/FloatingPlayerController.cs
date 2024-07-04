@@ -12,6 +12,10 @@ public sealed class FloatingPlayerController : ControllerBase
     private void Awake()
     {
         TryGetComponent(out rb);
+        if (inputProvider == null)
+        {
+            inputProvider = FindAnyObjectByType<InputProvider>();
+        }
     }
 
     private void FixedUpdate()
