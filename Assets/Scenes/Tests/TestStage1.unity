@@ -261,12 +261,16 @@ MonoBehaviour:
   - type: 1
     controller: {fileID: 1933513341}
     panel: {fileID: 1511543461}
+    virtualCamera: {fileID: 0}
   - type: 2
     controller: {fileID: 1779573316}
     panel: {fileID: 478268405}
+    virtualCamera: {fileID: 0}
   - type: 0
     controller: {fileID: 980810767}
     panel: {fileID: 0}
+    virtualCamera: {fileID: 0}
+  virtualCameraPrefab: {fileID: 381934392448388654, guid: 27bc4dc654265489ab4f3435b77dfbd9, type: 3}
 --- !u!1 &278882871
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +595,7 @@ GameObject:
   - component: {fileID: 471078580}
   - component: {fileID: 481680016}
   - component: {fileID: 477107640}
+  - component: {fileID: 481680017}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -607,7 +612,7 @@ Transform:
   m_GameObject: {fileID: 470362226}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -648,7 +653,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.34
+  orthographic size: 8.198973
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -769,6 +774,40 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470362226}
   m_Enabled: 1
+--- !u!114 &481680017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470362226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &659921896
 GameObject:
   m_ObjectHideFlags: 0
