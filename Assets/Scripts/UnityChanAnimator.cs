@@ -2,7 +2,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(GroundCheck))]
-public sealed class HumanoidAnimator : MonoBehaviour
+public sealed class UnityChanAnimator : MonoBehaviour
 {
     private static readonly int IsGrounded = Animator.StringToHash("isGround");
     private static readonly int Vertical = Animator.StringToHash("Vertical");
