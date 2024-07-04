@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+[DisallowMultipleComponent]
+public sealed class GameManager : MonoBehaviour
 {
     [SceneName] public string clearScene;
     [SceneName] public string overScene;
