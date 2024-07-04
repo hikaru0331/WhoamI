@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 721769089429005828, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
       propertyPath: m_Name
-      value: UnityChan_test
+      value: UnityChan
       objectReference: {fileID: 0}
+    - target: {fileID: 867790340502331279, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 580fc871889b142f883348995765b2b0, type: 2}
     - target: {fileID: 3117846679856293341, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -51,6 +55,22 @@ PrefabInstance:
     - target: {fileID: 3117846679856293341, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4328744544296670122, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 239310445, guid: ccb4cb8b941dc4c7186d280e240a496b, type: 3}
+    - target: {fileID: 4920112237860266499, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.976
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173119961372806696, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6945336
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173119961372806696, guid: 33b63107561f8466eb52e4c50b63d88c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.6529304
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
