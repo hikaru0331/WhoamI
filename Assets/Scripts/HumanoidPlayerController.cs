@@ -22,6 +22,10 @@ public sealed class HumanoidPlayerController : ControllerBase
     {
         TryGetComponent(out rb);
         TryGetComponent(out gc);
+        if (inputProvider == null)
+        {
+            inputProvider = FindAnyObjectByType<InputProvider>();
+        }
     }
 
     private void Update()

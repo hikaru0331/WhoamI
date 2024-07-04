@@ -15,6 +15,10 @@ public sealed class ObjectPlayerController : ControllerBase
     {
         TryGetComponent(out rb);
         TryGetComponent(out gc);
+        if (inputProvider == null)
+        {
+            inputProvider = FindAnyObjectByType<InputProvider>();
+        }
     }
 
     private void FixedUpdate()
