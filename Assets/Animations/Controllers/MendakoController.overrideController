@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MendakoController
+  m_Controller: {fileID: 9100000, guid: b67231a1bdc6f47a88ed95a986000bfe, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 423f0b4ad68a94e48ae781f992df5e36, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ed3c227a2c4654142af41c1699c621d6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c15ddd6e4446949b688a4bb7c0fd365b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 914fb1cae44f848c495a5cc4b06822dc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4bd5e973ab2e24e48b883418a452479c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d4f248f7bd66a49ba94bcb3c7727801b, type: 2}
