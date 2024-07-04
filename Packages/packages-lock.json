@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.cysharp.r3": {
-      "version": "1.1.12",
+      "version": "1.1.13",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -10,7 +10,7 @@
       "url": "https://package.openupm.com"
     },
     "com.cysharp.unitask": {
-      "version": "2.5.4",
+      "version": "2.5.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
