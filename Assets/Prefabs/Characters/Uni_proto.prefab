@@ -116,7 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 255252881333707717}
   - component: {fileID: 2752238062610445592}
-  - component: {fileID: 5643752147942253801}
   m_Layer: 0
   m_Name: trigger
   m_TagString: Untagged
@@ -174,18 +173,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
---- !u!114 &5643752147942253801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6600971072164112401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db59bf7c6acd44a8091561720502e974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6798110940183275149
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1299999692194618913}
   aiController: {fileID: 6399461120354236535}
+  trigger: {fileID: 2752238062610445592}
 --- !u!114 &6399461120354236535
 MonoBehaviour:
   m_ObjectHideFlags: 0
